@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Analisador Sintático</title>
+    <link rel="stylesheet" href="materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card grey lighten-4 card-over-x">
+                        <ul class="sid-nv-cstm schscroll">
+                            <li>
+                                <div class="row row-custom">
+                                    <div class="col s12 col-custom">
+                                        <div class="center">
+                                            <span class="card-title light-blue-text text-darken-4 card-title-custom">
+                                                Gramática Proposta
+                                            </span>
+                                            <table class="centered highlight responsive-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="tbl-lett-spac"><b>S::=</b></td>
+                                                        <td class="tbl-lett-spac">aBb</td>
+                                                        <td class="tbl-lett-spac">bAc</td>
+                                                        <td class="tbl-lett-spac">cCb</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="tbl-lett-spac"><b>A::=</b></td>
+                                                        <td class="tbl-lett-spac">aCb</td>
+                                                        <td class="tbl-lett-spac">ε</td>
+                                                        <td class="tbl-lett-spac"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="tbl-lett-spac"><b>B::=</b></td>
+                                                        <td class="tbl-lett-spac">aCa</td>
+                                                        <td class="tbl-lett-spac">bAb</td>
+                                                        <td class="tbl-lett-spac"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="tbl-lett-spac"><b>C::=</b></td>
+                                                        <td class="tbl-lett-spac">aB</td>
+                                                        <td class="tbl-lett-spac">cAc</td>
+                                                        <td class="tbl-lett-spac"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                             <li>
+                                <div class="row row-custom">
+                                    <div class="col s12 col-custom">
+                                        <div class="center">
+                                            <span class="card-title light-blue-text text-darken-4 card-title-custom">
+                                                Tabela do First e Follow
+                                            </span>
+                                            <table class="centered highlight responsive-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>First</th>
+                                                        <th>Follow</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="td-bord-top"><b>S</b></td>
+                                                        <td class="tbl-lett-spac td-bord-top">{a, b, c}</td>
+                                                        <td class="tbl-lett-spac td-bord-top">{$}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>A</b></td>
+                                                        <td class="tbl-lett-spac">{a, ε}</td>
+                                                        <td class="tbl-lett-spac">{b, c, $}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>B</b></td>
+                                                        <td class="tbl-lett-spac">{a, b}</td>
+                                                        <td class="tbl-lett-spac">{b, c, $}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>C</b></td>
+                                                        <td class="tbl-lett-spac">{a, c}</td>
+                                                        <td class="tbl-lett-spac">{b}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row row-custom">
+                                    <div class="col s12">
+                                        <div class="center">
+                                            <span class="card-title light-blue-text text-darken-4 card-title-custom">
+                                                Tabela de Análise Preditiva (Parsing)
+                                            </span>
+                                            <table class="centered highlight responsive-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>a</th>
+                                                        <th>b</th>
+                                                        <th>c</th>
+                                                        <th>$</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">S</th> 
+                                                        <td id="Sa" class="tbl-lett-spac">S<b class="no-tbl-lett-spac">-></b>aBb</td> 
+                                                        <td id="Sb" class="tbl-lett-spac">S<b class="no-tbl-lett-spac">-></b>bAc</td> 
+                                                        <td id="Sc" class="tbl-lett-spac">S<b class="no-tbl-lett-spac">-></b>cCb</td> 
+                                                        <td class="tbl-lett-spac">—</td> 
+                                                    </tr> 
+                                                    <tr> 
+                                                        <th scope="row">A</th> 
+                                                        <td id="Aa" class="tbl-lett-spac">A<b class="no-tbl-lett-spac">-></b>aCb</td> 
+                                                        <td id="Ab" class="tbl-lett-spac">A<b class="no-tbl-lett-spac">-></b>ε</td> 
+                                                        <td id="Ac" class="tbl-lett-spac">A<b class="no-tbl-lett-spac">-></b>ε</td> 
+                                                        <td id="AE" class="tbl-lett-spac">A<b class="no-tbl-lett-spac">-></b>ε</td> 
+                                                    </tr> 
+                                                    <tr> 
+                                                        <th scope="row">B</th> 
+                                                        <td id="Ba" class="tbl-lett-spac">B<b class="no-tbl-lett-spac">-></b>aCa</td> 
+                                                        <td id="Bb" class="tbl-lett-spac">B<b class="no-tbl-lett-spac">-></b>bAb</td> 
+                                                        <td class="tbl-lett-spac">—</td> 
+                                                        <td class="tbl-lett-spac">—</td> 
+                                                    </tr> 
+                                                    <tr> 
+                                                        <th scope="row">C</th> 
+                                                        <td id="Ca" class="tbl-lett-spac">C<b class="no-tbl-lett-spac">-></b>aB</td> 
+                                                        <td class="tbl-lett-spac">—</td> 
+                                                        <td id="Cc" class="tbl-lett-spac">C<b class="no-tbl-lett-spac">-></b>cAc</td> 
+                                                        <td class="tbl-lett-spac">—</td> 
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="row row-custom">
+                            <div class="col s12 m12 l8 right">
+                                <div class="col-container center">
+                                    <span class="card-title light-blue-text text-darken-4 card-title-custom">Tabela de Análise Preditiva (Parsing)</span>
+                                    <div class="input-field verdict-insert">
+                                        <input id="verdict-input" type="text" class="validate light-blue-text text-darken-4 entradaInput">
+                                    </div>
+                                    <div class="btn-verdict">
+                                        <button id="execute-analyzer" class="waves-effect waves-light btn light-blue darken-4 disabled" onclick="executeAnalyzer();">
+                                            <span class="line-text">Executar<i class="fas fa-angle-right i-btn-icon"></i></span>
+                                        </button>
+                                        <button id="generate-sentence" class="waves-effect waves-light btn light-blue darken-4">
+                                                <span>Gerar gramática<i class="material-icons right">playlist_add</i></span>
+                                        </button>
+                                        <button id="clean-analyzer" class="waves-effect waves-light btn light-blue darken-4 btn-top-lgt-2 disabled">
+                                                <span>Limpar Analisador<i class="material-icons right">clear_all</i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m12 l8 right">
+                                <div class="line-separ-tbl"></div>
+                                <div class="col-container center">
+                                    <div class="status-gramatica">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                    <table class="centered highlight tbl-result">
+                                        <thead>
+                                            <tr>
+                                                <th class="tooltipped center not-border" data-position="top" data-tooltip="Número de Iterações">
+                                                    It
+                                                </th>
+                                                <th class="center not-border">
+                                                    Pilha
+                                                </th>
+                                                <th class="center not-border">
+                                                    Entrada
+                                                </th>
+                                                <th class="center not-border">
+                                                    Ação
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody-stack"></tbody>
+                                    </table>
+                                    <div class="btn-verdict">
+                                        <button id="step-by-step" class="waves-effect waves-light btn light-blue darken-4 btn-top-pass-pass disabled">
+                                            <span class="line-text">Passo a passo<i class="fas fa-angle-double-right i-btn-icon"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
